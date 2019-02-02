@@ -7,6 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="{{ .Site.Params.author | default "John Doe" }}" />
     <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}" />
+    <meta name="twitter:card" content="summary" /></meta>
+    <meta name="twitter:site" content="@osanpozuki"></meta>
+    <meta name="twitter:creator" content="@osanpozuki"></meta>
+    <meta name="twitter:title" content="{{ if eq .URL "/" }}<title>{{ .Site.Title }}</title>{{ else }}<title>{{ .Title }}&nbsp;-&nbsp;{{ .Site.Title }}</title>{{ end }}"></meta>
+    <meta name="twitter:url" content="{{ .Permalink }}"></meta>
+    <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}"></meta>
+    <meta name="twitter:image" content="{{ .Site.BaseURL}}avatar.jpg"></meta>
     <base href="{{ .Site.BaseURL }}" />
     {{ $style := resources.Get "css/main.scss" | resources.ExecuteAsTemplate "css/main.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint -}}
     <link rel="stylesheet" href="{{ $style.Permalink }}" />
